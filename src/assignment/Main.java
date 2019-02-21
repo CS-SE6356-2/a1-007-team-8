@@ -17,13 +17,13 @@ class NamePrinter {
      * 
      */
     public void printNames() {
-        String separator = "-";
+        String separator = ";";
 
         String[] names = {
                 "Scott Jacobsen",
                 "Jorge Gonzalez",
                 "Michael Loney",
-                "Name 4",
+                "Humphrey Akuba",
                 "Name 5"};
 
         System.out.println(String.join(separator, names));
