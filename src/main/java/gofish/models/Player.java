@@ -1,3 +1,5 @@
+package gofish.models;
+
 class Player {
 	private String name;
 	private Hand hand;
