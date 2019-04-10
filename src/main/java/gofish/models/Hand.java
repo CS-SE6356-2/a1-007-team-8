@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 package gofish.models;
 
+=======
+package gofish;
+>>>>>>> 99561a0a4cc2d2ab51c17e33ffa71204e6d01fe1
 import java.util.ArrayList;
 
 import javax.lang.model.util.ElementScanner6;

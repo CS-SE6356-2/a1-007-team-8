@@ -11,12 +11,13 @@ public class Card {
     // Constructors
 
     public Card(String suit, String rank, int value) throws IllegalArgumentException {
+        this(suit, rank);
         this.value = value;
     }
 
-	public Card(String suit, String rank) {
+	public Card(String suit, String rank) throws IllegalArgumentException {
         // Check if requested card is valid
-        if (!validateCard(suit, rank)) {
+        if (!validateCard(suit.toLowerCase(), rank.toLowerCase())) {
             throw new IllegalArgumentException("Card suit or rank is invalid.");
         }
         this.suit = suit.toLowerCase();
