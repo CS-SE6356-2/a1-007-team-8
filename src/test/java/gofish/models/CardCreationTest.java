@@ -17,6 +17,7 @@ public class CardCreationTest {
     }
 
     // Test that the creation of an invalid card throws an exception
+    @SuppressWarnings("unused")
     @DisplayName ("Invalid Card throws exception")
     @Test
     public void testCardInvalidError() {
