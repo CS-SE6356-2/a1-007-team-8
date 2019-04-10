@@ -1,3 +1,5 @@
+package gofish;
+
 import java.util.Arrays;
 
 class Card {
@@ -8,7 +10,7 @@ class Card {
 
     public Card(String suit, String rank, int value) throws IllegalArgumentException {
         // Check if requested card is valid
-        if (!validateCard(suit, rank)) {
+        if (!validateCard(suit.toLowerCase(), rank.toLowerCase())) {
             throw new IllegalArgumentException("Card suit or rank is invalid.");
         }
         this.suit = suit.toLowerCase();
