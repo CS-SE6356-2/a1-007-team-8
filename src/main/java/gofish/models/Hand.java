@@ -2,8 +2,6 @@ package gofish.models;
 
 import java.util.ArrayList;
 
-import javax.lang.model.util.ElementScanner6;
-
 public class Hand {
     private ArrayList<Card> publicCards;
     private ArrayList<Card> privateCards;
