@@ -41,6 +41,10 @@ public class Hand {
         return cards;
     }
 
+    public int getCardCount() {
+        return publicCards.size() + privateCards.size();
+    }
+
     // Mutators
 
     /**
@@ -72,6 +76,32 @@ public class Hand {
      */
     public void addCard(Card card) {
         privateCards.add(card);
+    }
+
+    /**
+     * Make an existing public card private
+     * @param   card    public card to make private
+     */
+    public boolean makeCardPrivate(Card card) {
+        // Make sure card exists in public cards
+        if (!publicCards.contains(card))
+            return false;
+        publicCards.remove(card);
+        addCard(card);
+        return true;
+    }
+
+    /**
+     * Make an existing private card public
+     * @param   card    private card to make public
+     */
+    public boolean makeCardPublic(Card card) {
+        // Make sure card exists in private cards
+        if (!privateCards.contains(card))
+            return false;
+        privateCards.remove(card);
+        addCard(card, true);
+        return true;
     }
 
     // TODO: Make draw func
