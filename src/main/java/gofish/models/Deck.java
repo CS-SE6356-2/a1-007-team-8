@@ -15,7 +15,9 @@ public class Deck {
 	private void addCards() {
 		for (String suit : Card.SUITS) {
 			for (String rank : Card.RANKS) {
-				cards.add(new Card(suit, rank));
+				if (!rank.equals("joker")) {
+					cards.add(new Card(suit, rank));
+				}
 			}
 		}
 	}

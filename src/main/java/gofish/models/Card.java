@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Card {
 	static final String[] SUITS = {"club", "spade", "diamond", "heart"};
-	static final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+	static final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     private int value;
     private String suit, rank;
 
