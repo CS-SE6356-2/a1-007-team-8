@@ -1,6 +1,6 @@
 package gofish.models;
 
-class Player {
+public class Player {
 	private String name;
 	private Hand hand;
 	private int score, wins;
@@ -18,18 +18,23 @@ class Player {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public Hand getHand() {
-		return this.hand;
+		return hand;
 	}
 
 	public int getScore() {
-		return this.score;
+		return score;
 	}
 
 	public int getWins() {
-		return this.wins;
+		return wins;
 	}
+
+	// TODO: Make draw func
+	/* public void draw(Frame f) {
+		do something
+	}*/
 }
