@@ -1,21 +1,19 @@
-package gofish;
+package gofish.models;
 
-import org.junit.Test;
-import org.junit.Before;
-import junit.framework.TestCase;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class PlayerTests extends TestCase {
+public class PlayerTests {
 	private Player player;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		player = new Player();
 	}
 
 	@Test
 	public void testAddingToHand() {
-		Card c = new Card("hearts", "3");
+		Card c = new Card("heart", "3");
 		player.getHand().addCard(c);
 		assertEquals(player.getHand().getPrivateCards().size(), 1);
 		assertTrue(player.getHand().getPrivateCards().get(0).equals(c));

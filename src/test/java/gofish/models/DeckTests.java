@@ -1,22 +1,21 @@
-package gofish;
+package gofish.models;
 
-import org.junit.Test;
-import org.junit.Before;
-import junit.framework.TestCase;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 
-public class DeckTests extends TestCase {
+public class DeckTests {
 	private Deck deck;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		deck = new Deck();
 	}
 
 	@Test
 	public void testNewDeckHasRightSize() {
-		assertEquals(deck.getCards().size(), 52);
+		System.out.println(deck.getCards().size());
+		assertEquals(52, deck.getCards().size());
 	}
 
 	@Test
