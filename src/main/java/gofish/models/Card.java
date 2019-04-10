@@ -73,7 +73,13 @@ public class Card {
 		}
 	}
 
-	public boolean equals(Card other) {
-		return this.rank.equals(other.getRank()) && this.suit.equals(other.getSuit());
+    @Override
+	public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Card))
+            return false;
+        Card other = (Card) o;
+		return this.rank.equals(other.getRank()) && this.suit.equals(other.getSuit()) && this.value == other.getValue();
 	}
 }

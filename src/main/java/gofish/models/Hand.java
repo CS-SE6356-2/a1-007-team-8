@@ -104,6 +104,14 @@ public class Hand {
         return true;
     }
 
+    /**
+     * Removes all cards from the hand
+     */
+    public void empty() {
+        privateCards.clear();
+        publicCards.clear();
+    }
+
     // TODO: Make draw func
     /* public void draw(Frame f) {
         do something
