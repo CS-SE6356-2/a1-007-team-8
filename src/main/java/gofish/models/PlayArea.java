@@ -4,7 +4,7 @@ public class PlayArea {
 	private ArrayList<Card> cards;
 
 	public PlayArea() {
-		cards = new ArrayList<Card>();
+		this.cards = new ArrayList<Card>();
 	}
 	
 	public ArrayList<Card> getCards() {

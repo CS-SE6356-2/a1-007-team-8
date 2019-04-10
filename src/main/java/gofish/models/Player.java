@@ -16,18 +16,18 @@ class Player {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public Hand getHand() {
-		return this.hand;
+		return hand;
 	}
 
 	public int getScore() {
-		return this.score;
+		return score;
 	}
 
 	public int getWins() {
-		return this.wins;
+		return wins;
 	}
 }
