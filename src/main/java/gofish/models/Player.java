@@ -1,4 +1,4 @@
-package gofish;
+package gofish.models;
 
 public class Player {
 	private String name;

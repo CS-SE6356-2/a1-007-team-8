@@ -1,4 +1,5 @@
-package gofish;
+package gofish.models;
+
 import java.util.ArrayList;
 import java.util.Collections;
 

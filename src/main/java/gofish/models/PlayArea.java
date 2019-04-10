@@ -1,4 +1,5 @@
-package gofish;
+package gofish.models;
+
 import java.util.ArrayList;
 
 public class PlayArea {
