@@ -12,7 +12,7 @@ public class PlayArea {
 	}
 	
 	public Card removeCard() {
-		removeCard(0);
+		return removeCard(0);
 	}
 	
 	public Card removeCard(int index) {
@@ -24,10 +24,15 @@ public class PlayArea {
 	}
 	
 	public boolean addCard(Card c) {
-		return cards.add(cards.size(), c);
+		return addCard(cards.size(), c);
 	}
 	
 	public boolean addCard(int index, Card c) {
-		return cards.add(index, c);
+		try {
+			cards.add(index, c);
+			return true;
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		}
 	}
 }

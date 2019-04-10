@@ -3,18 +3,23 @@ import java.util.ArrayList;
 import javax.lang.model.util.ElementScanner6;
 
 class Hand {
-    ArrayList<Card> publicCards = new ArrayList<>();
-    ArrayList<Card> privateCards = new ArrayList<>();
+    private ArrayList<Card> publicCards;
+    private ArrayList<Card> privateCards;
 
     // Constructors
 
-    public Hand() {}
+    public Hand() {
+		publicCards = new ArrayList<Card>();
+		privateCards = new ArrayList<Card>();
+	}
 
     public Hand(ArrayList<Card> privateCards) {
+		this();
         this.privateCards = privateCards;
     }
 
     public Hand(ArrayList<Card> privateCards, ArrayList<Card> publicCards) {
+		this();
         this.privateCards = privateCards;
         this.publicCards = publicCards;
     }

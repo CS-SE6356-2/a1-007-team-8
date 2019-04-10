@@ -13,7 +13,7 @@ class Deck {
 	private void addCards() {
 		for (String suit : Card.SUITS) {
 			for (String rank : Card.RANKS) {
-				cards.add(suit, rank);
+				cards.add(new Card(suit, rank));
 			}
 		}
 	}
@@ -37,10 +37,15 @@ class Deck {
 
 	public boolean addCard(Card c) {
 		// Add to top
-		return cards.add(0, c);
+		return addCard(0, c);
 	}
 
 	public boolean addCard(int index, Card c) {
-		return cards.add(index, c);
+		try {
+			cards.add(index, c);
+			return true;
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		}
 	}
 }

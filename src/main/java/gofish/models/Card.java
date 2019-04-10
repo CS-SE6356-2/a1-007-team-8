@@ -1,20 +1,26 @@
 import java.util.Arrays;
 
 class Card {
-    int value;
-    String suit, rank;
+	static final String[] SUITS = {"club", "spade", "diamond", "heart"};
+	static final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    private int value;
+    private String suit, rank;
 
-    // Constructor
+    // Constructors
 
     public Card(String suit, String rank, int value) throws IllegalArgumentException {
+        this.value = value;
+    }
+
+	public Card(String suit, String rank) {
         // Check if requested card is valid
         if (!validateCard(suit, rank)) {
             throw new IllegalArgumentException("Card suit or rank is invalid.");
         }
         this.suit = suit.toLowerCase();
         this.rank = rank.toLowerCase();
-        this.value = value;
-    }
+		this.value = defaultValue(rank);
+	}
 
     // Accessors
 
@@ -43,12 +49,24 @@ class Card {
      * @param   rank    rank of requested card
      * @return          true of requested suit and rank are valid
      */
-    private boolean validateCard(String suit, String rank) {
-        final String[] SUITS = {"club", "spade", "diamond", "heart"};
-        final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    private static boolean validateCard(String suit, String rank) {
         // Check if suit/rank is invalid
         if (!Arrays.stream(SUITS).anyMatch(suit::equals) || !Arrays.stream(RANKS).anyMatch(rank::equals))
             return false;
         return true;
     }
+
+	private static int defaultValue(String rank) {
+		try {
+			return Integer.parseInt(rank);
+		} catch (NumberFormatException e) {
+			switch (rank) {
+				case "jack": return 11;
+				case "queen": return 12;
+				case "king": return 13;
+				case "ace": return 1;
+				default: return -1;
+			}
+		}
+	}
 }
