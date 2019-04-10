@@ -1,3 +1,4 @@
+package gofish;
 class Player {
 	private String name;
 	private Hand hand;

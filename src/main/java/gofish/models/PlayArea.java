@@ -1,3 +1,4 @@
+package gofish;
 import java.util.ArrayList;
 
 public class PlayArea {
