@@ -1,7 +1,7 @@
 package gofish;
 import java.util.Arrays;
 
-class Card {
+public class Card {
 	static final String[] SUITS = {"club", "spade", "diamond", "heart"};
 	static final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     private int value;
@@ -69,5 +69,9 @@ class Card {
 				default: return -1;
 			}
 		}
+	}
+
+	public boolean equals(Card other) {
+		return this.rank.equals(other.getRank()) && this.suit.equals(other.getSuit());
 	}
 }

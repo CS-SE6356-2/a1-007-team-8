@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import javax.lang.model.util.ElementScanner6;
 
-class Hand {
+public class Hand {
     private ArrayList<Card> publicCards;
     private ArrayList<Card> privateCards;
 

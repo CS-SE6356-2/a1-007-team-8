@@ -2,13 +2,13 @@ package gofish;
 import java.util.ArrayList;
 import java.util.Collections;
 
-class Deck {
+public class Deck {
 	private ArrayList<Card> cards;
 
 	public Deck() {
 		this.cards = new ArrayList<Card>();
 		addCards();
-		Collections.shuffle(cards);
+		shuffle();
 	}
 
 	private void addCards() {
@@ -21,6 +21,10 @@ class Deck {
 
 	public void shuffle() {
 		Collections.shuffle(cards);
+	}
+
+	public ArrayList<Card> getCards() {
+		return cards;
 	}
 
 	public Card drawCard() {

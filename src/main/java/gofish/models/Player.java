@@ -1,5 +1,6 @@
 package gofish;
-class Player {
+
+public class Player {
 	private String name;
 	private Hand hand;
 	private int score, wins;
