@@ -30,4 +30,9 @@ class Player {
 	public int getWins() {
 		return wins;
 	}
+
+	// TODO: Make draw func
+	/* public void draw(Frame f) {
+		do something
+	}*/
 }
