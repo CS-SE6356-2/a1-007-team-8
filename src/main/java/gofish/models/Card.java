@@ -1,4 +1,4 @@
-package gofish;
+package gofish.models;
 
 import java.util.Arrays;
 
