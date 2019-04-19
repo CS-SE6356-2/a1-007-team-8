@@ -4,9 +4,9 @@ import gofish.models.*;
 import java.util.*;
 
 public class GameController {
-	private Game game;
-	private int turnNumber, roundNumber;
-	private Rule[] rules;
+	protected Game game;
+	protected int turnNumber, roundNumber;
+	protected Rule[] rules;
 
 	public GameController() {
 		turnNumber = 0;
