@@ -5,10 +5,21 @@ import gofish.models.Game;
 public class Rule {
 
     interface RuleChecker {
+        /**
+         * Check if rule is violated or not
+         * @param game current game state
+         * @param value the value to test the game state against
+         * @return true if rule is not violated, false otherwise
+         */
         boolean isMet(Game game, int value);
     }
 
     interface ValueCalculator {
+        /**
+         * Calculate the value for the rule based on the game state
+         * @param game The current game state
+         * @return The calculated value based on the game state
+         */
         int calulateValue(Game game);
     }
 
@@ -39,10 +50,19 @@ public class Rule {
         this.rc = rc;
     }
 
+    /**
+     * Get the static value
+     * @return The static value
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     * Get the dynamic value based on the game state
+     * @param g The game state
+     * @return value calculated by the ValueCalculator
+     */
     public int getValue(Game g) {
         return vc.calulateValue(g);
     }
@@ -75,6 +95,11 @@ public class Rule {
         this.vc = vc;
     }
 
+    /**
+     * Check if the rule passes
+     * @param g The current game state
+     * @return true if rule passes, false if not
+     */
     public boolean isMet(Game g) {
         if (rc == null) {
             return true;

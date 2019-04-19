@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameControllerTests {
     private GameController gc;
     private Game game;
+    // Basic Go Fish rules
     private Rule[] rules = new Rule[]{ new Rule("maxPlayers", 7, (Game game, int value) -> game.getPlayers().size() <= value ),
                                        new Rule("maxHandSize", 52, (Game game, int value) -> {
                                            for (Player p : game.getPlayers()) {
@@ -33,6 +34,7 @@ public class GameControllerTests {
                                        new Rule("pointsToWin", 100)
                                      };
 
+    // Start game with one deck and five players
     @BeforeEach
     public void setUp() {
         game = new Game("Go Fish");
@@ -45,6 +47,7 @@ public class GameControllerTests {
         gc = new GameController(game, rules);
     }
 
+    // Test if winner checking works
     @Test
     public void testWinnerChecking() {
         assertNull(gc.checkWinner());
@@ -52,6 +55,7 @@ public class GameControllerTests {
         assertNotNull(gc.checkWinner());
     }
 
+    // Test if advancing turns works
     @Test
     public void testAdvanceTurn() {
         ArrayList<Player> players = game.getPlayers();
@@ -66,6 +70,7 @@ public class GameControllerTests {
         assertEquals(gc.checkWinner().getWins(), 1);
     }
 
+    // Test if max player checking works
     @Test
     public void testMaxPlayers() {
         game.getPlayers().clear();
@@ -75,6 +80,7 @@ public class GameControllerTests {
         assertFalse(gc.addPlayer(new Player()));
     }
 
+    // Test if player removal works
     @Test
     public void testPlayerRemoval() {
         for (int i = 0; i < 5; i++) {
@@ -83,6 +89,7 @@ public class GameControllerTests {
         assertNull(gc.removePlayer());
     }
 
+    // Test if dealing to players works
     @Test
     public void testDealing() {
         for (Player p : game.getPlayers()) {
@@ -94,6 +101,7 @@ public class GameControllerTests {
         }
     }
 
+    // Test all rules
     @Test
     public void testRules() {
         for (Rule r : rules) {
