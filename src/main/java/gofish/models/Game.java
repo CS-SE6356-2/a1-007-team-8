@@ -1,15 +1,13 @@
 package gofish.models;
 
+import gofish.controllers.Rule;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 
 public class Game {
 	private ArrayList<Deck> decks;
 	private ArrayList<Player> players;
 	private Player activePlayer;
 	private PlayArea playArea;
-	private Map<String, Integer> rules;
 	private String name;
 
 	public Game() {
@@ -17,14 +15,12 @@ public class Game {
 		this.players = new ArrayList<Player>();
 		this.activePlayer = null;
 		this.playArea = new PlayArea();
-		this.rules = new HashMap<String, Integer>();
 		this.name = "";
 	}
 
-	public Game(String name, Map<String, Integer> rules) {
+	public Game(String name) {
 		this();
 		this.name = name;
-		this.rules = rules;
 	}
 
 	public ArrayList<Deck> getDecks() {
@@ -53,10 +49,6 @@ public class Game {
 
 	public PlayArea getPlayArea() {
 		return playArea;
-	}
-
-	public Map<String, Integer> getRules() {
-		return rules;
 	}
 
 	public String getName() {

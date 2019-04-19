@@ -127,4 +127,12 @@ public class Hand {
     public boolean hasCard(Card card) {
         return privateCards.contains(card) || publicCards.contains(card);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Hand) {
+            return ((Hand) o).getPrivateCards().equals(privateCards) && ((Hand) o).getPublicCards().equals(publicCards);
+        }
+        return false;
+    }
 }
