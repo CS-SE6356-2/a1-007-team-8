@@ -1,6 +1,9 @@
 package gofish.views;
 
-public class Component {
+import javax.swing.JComponent;
+
+public class Component extends JComponent {
+    private static final long serialVersionUID = 1L;
     private int x, y, width, height;
     private boolean clickable, draggable;
 
