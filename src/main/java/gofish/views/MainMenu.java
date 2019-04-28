@@ -22,7 +22,7 @@ public class MainMenu {
         // Assign buttons to listeners
         $$$setupUI$$$();
         playButton.addActionListener(new EventListener((ActionEvent event) -> {
-            gc.getFrame().clear();
+            gc.loadPanel(new SetupPanel(gc).getView());
         }));
         rulesButton.addActionListener(new EventListener((ActionEvent event) -> {
             gc.loadPanel(new RulesPanel(gc).getView());
