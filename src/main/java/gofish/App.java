@@ -45,7 +45,6 @@ public class App {
 		// Initialize GameController w/ frame
 		GameController gc = new GoFishController("Go Fish", RULES);
 		Frame frame = new Frame("Go Fish", 500, 629, 0xFF0000);
-		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		gc.setFrame(frame);
 		gc.getFrame().loadPanel(new MainMenu(gc).getView());
