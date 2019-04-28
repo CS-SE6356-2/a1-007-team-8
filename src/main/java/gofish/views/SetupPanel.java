@@ -1,5 +1,6 @@
 package gofish.views;
 
+import gofish.App;
 import gofish.controllers.GameController;
 import gofish.models.Player;
 
@@ -41,10 +42,12 @@ public class SetupPanel {
                             ; //Error has occurred
                     }
                 }
-                // Testing
-                /*for (Player p : gc.getPlayers()) {
-                    System.out.println("*" + p.getName() + "*");
-                }*/
+                // Log names to console
+                if (App.verbose) {
+                    App.log("Player names:");
+                    for (Player p : gc.getPlayers())
+                        App.log("*" + p.getName() + "*");
+                }
                 //gc.loadPanel(new MainMenu(gc).getView());
             }
         }));
