@@ -184,7 +184,7 @@ public class GameController {
 	 * @param ruleName the name of the rule that you want the value for
 	 * @return The value of the rule with name ruleName
 	 */
-	private int getRuleValue(String ruleName) {
+	public int getRuleValue(String ruleName) {
 		for (Rule r : rules) {
 			if (r.getName().equals(ruleName)) {
 				if (r.getValueCalculator() == null) {

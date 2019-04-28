@@ -15,14 +15,24 @@ public class SetupPanel {
     private JTextArea playerNames;
     private JLabel instructions;
 
+    int MAXP, MINP;
+
     public SetupPanel(GameController gc) {
+        // Get allowed max/min players
+        MAXP = gc.getRuleValue("maxPlayers");
+        MINP = gc.getRuleValue("minPlayers");
+        // Setup instructions
+        instructions.setText("Enter one player name per line. (Minimum "+MINP+", Maximum "+MAXP+")");
+
+        // Listeners
         mainMenuBtn.addActionListener(new EventListener((ActionEvent event) -> {
             gc.loadPanel(new MainMenu(gc).getView());
         }));
         playBtn.addActionListener(new EventListener((ActionEvent event) -> {
+            // Check that player count is valid
             int numLines = countLines(playerNames.getText());
-            if (numLines < 2 || numLines > 15)
-                new InvalidPlayerCount(numLines);
+            if (numLines < MINP || numLines > MAXP)
+                new InvalidPlayerCount(gc, numLines);
             else {
                 for (String name : playerNames.getText().split("\\n")) {
                     name = name.strip();

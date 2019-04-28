@@ -1,5 +1,7 @@
 package gofish.views;
 
+import gofish.controllers.GameController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,17 +16,25 @@ public class InvalidPlayerCount extends JDialog {
     private JLabel title;
     private JTextArea content;
 
-    public InvalidPlayerCount(int count) {
+    public InvalidPlayerCount(GameController gc, int count) {
+        // Get allowed max/min players
+        int MAXP = gc.getRuleValue("maxPlayers");
+        int MINP = gc.getRuleValue("minPlayers");
+
+        //Construct error message
         String errorMsg = "", infoMsg = "";
-        if (count > 15) {
+        if (count > MAXP) {
             errorMsg = "Too many ";
-            infoMsg = "Maximum allowed players: 15";
-        } else {
+            infoMsg = "Maximum allowed players: " + MAXP;
+        } else if (count < MINP) {
             errorMsg = "Too few ";
-            infoMsg = "Minimum allowed players: 2";
+            infoMsg = "Minimum allowed players: " + MINP;
+        } else {
+            errorMsg = "Correct number of ";
         }
         content.setText(errorMsg + "players.\nNumber of players given: " + count + "\n" + infoMsg);
 
+        //Construct panel
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
@@ -42,13 +52,6 @@ public class InvalidPlayerCount extends JDialog {
     private void onOK() {
         // add your code here
         dispose();
-    }
-
-    public static void main(String[] args) {
-        InvalidPlayerCount dialog = new InvalidPlayerCount(0);
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
     }
 
     {
