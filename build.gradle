@@ -33,7 +33,7 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'gofish.controllers.GameController'
+mainClassName = 'gofish.App'
 
 test {
 	useJUnitPlatform()
