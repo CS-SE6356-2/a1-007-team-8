@@ -75,6 +75,13 @@ public class GameController {
 		game = new Game(game.getName());
 	}
 
+	public boolean addPlayers(Player[] players) {
+		for (Player player : players)
+			if (!addPlayer(player))
+				return false;
+		return true;
+	}
+
 	/**
 	 * Remove the last player
 	 * @return The player removed
@@ -207,6 +214,8 @@ public class GameController {
 	public Frame getFrame() { return frame; }
 
 	public void setFrame(Frame frame) { this.frame = frame; }
+
+	public ArrayList<Player> getPlayers() { return game.getPlayers(); }
 
 	// Loads a given JPanel to the frame
 	public void loadPanel(JPanel panel) {
