@@ -13,7 +13,7 @@ public class Frame extends JFrame {
         this.height = height;
         this.backgroundColor = bgColor;
         this.setPreferredSize(new Dimension(width, height));
-        this.setBackground(Color.RED);
+        this.setBackground(new Color(bgColor));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(width, height));
     }
