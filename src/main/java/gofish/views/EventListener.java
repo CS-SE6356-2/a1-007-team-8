@@ -5,8 +5,8 @@ import gofish.controllers.GameController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Event implements ActionListener {
-    private GameController gc;
+public class EventListener implements ActionListener {
+   // private static GameController gc;
     private EventHandler handler;
 
     /**
@@ -14,22 +14,18 @@ public class Event implements ActionListener {
      * @param e The event describing what happened
      */
     public void actionPerformed(ActionEvent e) {
-        handler.handle(e, gc);
+        handler.handle(e);
     }
 
     /**
      * Manipulates the GameController based on the ActionEvent received
      */
     public interface EventHandler {
-        void handle(ActionEvent e, GameController gc);
+        void handle(ActionEvent e);
     }
 
-    public Event(GameController gc, EventHandler handler) {
-        this.gc = gc;
+    public EventListener(EventHandler handler) {
+        //gc = gameController;
         this.handler = handler;
-    }
-
-    public static void main(String[] args) {
-        Event e = new Event(gc, () ->)
     }
 }

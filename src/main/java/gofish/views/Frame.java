@@ -1,9 +1,7 @@
 package gofish.views;
 
 import gofish.models.Player;
-
 import javax.swing.*;
-import java.awt.event.ActionListener;
 
 public class Frame extends JFrame {
     private int width, height, backgroundColor;
@@ -20,14 +18,15 @@ public class Frame extends JFrame {
 
     public void win(Player winner) {}
 
-    public void loadMainMenu(ActionListener playBtn, ActionListener rulesBtn, ActionListener quitBtn) {
-        clear();
-        // Load main menu
-        setContentPane(new MainMenu(playBtn, rulesBtn, quitBtn).getView());
+    public void loadPanel(JPanel panel) {
+       // clear();
+        // Load pane
+        setContentPane(panel);
         pack();
         setVisible(true);
     }
 
+    // probably don't need
     public void clear() {
         getContentPane().removeAll();
         revalidate();

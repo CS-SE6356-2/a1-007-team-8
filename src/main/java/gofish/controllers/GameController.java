@@ -24,7 +24,7 @@ public class GameController {
 		roundNumber = 0;
 		rules = new Rule[]{};
 		game = new Game();
-		frame.loadMainMenu(new MainMenuPlayBtn(), new MainMenuRulesBtn(), new MainMenuQuitBtn());
+		frame.loadPanel(new MainMenu(this).getView());
 	}
 
 	public GameController(Game game, Rule[] rules) {
@@ -200,31 +200,7 @@ public class GameController {
 		return brokenRules;
 	}
 
-	/* ----- LISTENERS ----- */
-
-	private class MainMenuPlayBtn implements ActionListener {
-		public MainMenuPlayBtn() {}
-
-		public void actionPerformed(ActionEvent e) {
-			frame.clear();
-		}
-	}
-
-	private class MainMenuRulesBtn implements ActionListener {
-		public MainMenuRulesBtn() {}
-
-		public void actionPerformed(ActionEvent e) {
-			frame.clear();
-		}
-	}
-
-	private class MainMenuQuitBtn implements ActionListener {
-		public MainMenuQuitBtn() {}
-
-		public void actionPerformed(ActionEvent e) {
-			System.exit(0);
-		}
-	}
+	public Frame getFrame() { return frame; }
 
 	/* ----- MAIN ----- */
 
