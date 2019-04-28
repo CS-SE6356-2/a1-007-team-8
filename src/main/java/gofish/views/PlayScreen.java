@@ -14,7 +14,7 @@ public class PlayScreen {
     private JPanel opponentPanel;
     private JPanel playerPanel;
 
-    ArrayList<JButton> opponentBtns = new ArrayList<>();
+    //ArrayList<JButton> opponentBtns = new ArrayList<>();
     // Player/Card to request (only card rank matters)
     Player requestPlayer;
     Card requestCard;
@@ -22,25 +22,7 @@ public class PlayScreen {
 
     public PlayScreen(GameController gc) {
         this.gc = gc;
-        //$$$setupUI$$$();
-
-        /* ----- Setup panel ----- */
-        Player activePlayer = gc.getActivePlayer();
-        //Populate opponent panel
-        for (Player p : gc.getPlayers()) {
-            if (p != activePlayer) {
-                // Create a button for each opponent
-                JButton btn = new JButton(p.getName());
-                btn.addActionListener(new EventListener((ActionEvent event) -> {
-                    // Selects the opponent to request a card from
-                    requestPlayer = p;
-                }));
-
-                opponentBtns.add(btn);
-                opponentPanel.add(btn);
-
-            }
-        }
+        $$$setupUI$$$();
 
         /* ----- Listeners ----- */
         mainMenuBtn.addActionListener(new EventListener((ActionEvent event) -> {
@@ -60,16 +42,13 @@ public class PlayScreen {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
+        createUIComponents();
         playView = new JPanel();
         playView.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(3, 1, new Insets(0, 0, 0, 0), -1, -1));
         mainMenuBtn = new JButton();
         mainMenuBtn.setText("Return to Main Menu");
         playView.add(mainMenuBtn, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        opponentPanel = new JPanel();
-        opponentPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         playView.add(opponentPanel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        playerPanel = new JPanel();
-        playerPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         playView.add(playerPanel, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
     }
 
@@ -82,6 +61,23 @@ public class PlayScreen {
 
     private void createUIComponents() {
         // Place custom component creation code here
+        opponentPanel = new JPanel();
 
+        /* ----- Setup panel ----- */
+        Player activePlayer = gc.getActivePlayer();
+        //Populate opponent panel
+        for (Player p : gc.getPlayers()) {
+            if (p != activePlayer) {
+                // Create a button for each opponent
+                JButton btn = new JButton(p.getName());
+                btn.addActionListener(new EventListener((ActionEvent event) -> {
+                    // Selects the opponent to request a card from
+                    requestPlayer = p;
+                }));
+
+                //opponentBtns.add(btn);
+                opponentPanel.add(btn);
+            }
+        }
     }
 }

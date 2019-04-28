@@ -53,6 +53,7 @@ public class SetupPanel {
                         App.log("*" + p.getName() + "*");
                 }
                 // Load the play screen
+                //gc.advanceTurn();
                 gc.loadPanel(new PlayScreen(gc).getView());
             }
         }));
