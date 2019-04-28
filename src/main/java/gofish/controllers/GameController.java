@@ -152,6 +152,10 @@ public class GameController {
 		return null;
 	}
 
+	public Player getActivePlayer() {
+		return game.getActivePlayer();
+	}
+
 	/**
 	 * Check if rule conditions are met
 	 * @param ruleName the name of the rule being tested
