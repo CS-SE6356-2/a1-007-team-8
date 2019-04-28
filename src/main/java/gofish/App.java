@@ -47,7 +47,7 @@ public class App {
 		Frame frame = new Frame("Go Fish", 500, 629, 0xFF0000);
 		frame.setLocationRelativeTo(null);
 		gc.setFrame(frame);
-		gc.getFrame().loadPanel(new MainMenu(gc).getView());
+		gc.loadPanel(new MainMenu(gc).getView());
 
 
 	}

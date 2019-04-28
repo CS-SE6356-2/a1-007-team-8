@@ -1,15 +1,21 @@
 package gofish.models;
 
 import gofish.App;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Arrays;
 
 public class Card extends JComponent {
 	static final String[] SUITS = {"clubs", "spades", "diamonds", "hearts"};
 	static final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-	static final int WIDTH = 100;
-	static final int HEIGHT = 140;
+	public static final int WIDTH = 102;
+	public static final int HEIGHT = 150;
     private int value;
     private String suit, rank;
 
@@ -92,8 +98,21 @@ public class Card extends JComponent {
 	public void paint(Graphics g) {
     	int x = getX();
     	int y = getY();
-    	App.log("painting");
-    	g.setColor(new Color(0xFFFFFF));
-    	g.fillRect(x, y, WIDTH, HEIGHT);
+
+    	String fileName = (suit.charAt(0) + "").toUpperCase() + ".png";
+    	if (!rank.equals("10")) {
+    		fileName = (rank.charAt(0) + "").toUpperCase() + fileName;
+	    } else {
+		    fileName = "10" + fileName;
+	    }
+	    fileName = "cards/" + fileName;
+
+	    try {
+		    final BufferedImage image = ImageIO.read(new File(ClassLoader.getSystemClassLoader().getResource(fileName).toURI()));
+		    g.drawImage(image, x, y, null);
+	    } catch (IOException | URISyntaxException e) {
+	    	App.log("Failed to load card resource (" + fileName + ")");
+	    	e.printStackTrace();
+	    }
 	}
 }
