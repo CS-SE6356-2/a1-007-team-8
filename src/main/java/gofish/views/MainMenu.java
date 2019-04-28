@@ -28,7 +28,7 @@ public class MainMenu {
             gc.loadPanel(new RulesPanel(gc).getView());
         }));
         quitButton.addActionListener(new EventListener((ActionEvent event) -> {
-            System.exit(0);
+            gc.loadPanel(new QuitScreen(gc).getView());
         }));
     }
 
