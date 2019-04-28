@@ -10,8 +10,8 @@ public class CardCreationTest {
     @DisplayName ("Card Creation")
     @Test
     public void testCardCreation() {
-        Card card = new Card("Club", "acE", 1);
-        assertEquals(card.getSuit(), "club");
+        Card card = new Card("ace", "clubs", 1);
+        assertEquals(card.getSuit(), "clubs");
         assertEquals(card.getRank(), "ace");
         assertEquals(card.getValue(), 1);
     }
@@ -22,11 +22,11 @@ public class CardCreationTest {
     @Test
     public void testCardInvalidError() {
         try {
-            Card card = new Card("horse", "5", 5);
+            Card card = new Card("5", "horse", 5);
             fail("Invalid Card created.");
         } catch (IllegalArgumentException e) {}
         try {
-            Card card = new Card("club", "asdf", 10);
+            Card card = new Card("asdf", "clubs", 10);
             fail("Invalid Card created.");
         } catch (IllegalArgumentException e) {}
     }

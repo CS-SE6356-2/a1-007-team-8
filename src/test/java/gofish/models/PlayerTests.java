@@ -13,7 +13,7 @@ public class PlayerTests {
 
 	@Test
 	public void testAddingToHand() {
-		Card c = new Card("heart", "3");
+		Card c = new Card("3", "hearts");
 		player.getHand().addCard(c);
 		assertEquals(player.getHand().getPrivateCards().size(), 1);
 		assertTrue(player.getHand().getPrivateCards().get(0).equals(c));

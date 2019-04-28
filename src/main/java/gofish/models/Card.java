@@ -3,19 +3,19 @@ package gofish.models;
 import java.util.Arrays;
 
 public class Card {
-	static final String[] SUITS = {"club", "spade", "diamond", "heart"};
+	static final String[] SUITS = {"clubs", "spades", "diamonds", "hearts"};
 	static final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
     private int value;
     private String suit, rank;
 
     // Constructors
 
-    public Card(String suit, String rank, int value) throws IllegalArgumentException {
-        this(suit, rank);
+    public Card(String rank, String suit, int value) throws IllegalArgumentException {
+        this(rank, suit);
         this.value = value;
     }
 
-	public Card(String suit, String rank) throws IllegalArgumentException {
+	public Card(String rank, String suit) throws IllegalArgumentException {
         // Check if requested card is valid
         if (!validateCard(suit.toLowerCase(), rank.toLowerCase())) {
             throw new IllegalArgumentException("Card suit or rank is invalid.");

@@ -115,7 +115,7 @@ public class GameControllerTests {
         assertFalse(rules[0].isMet(game));
 
         for (int i = 0; i < 53; i++) {
-            game.getPlayers().get(0).getHand().addCard(new Card("spade", "ace"));
+            game.getPlayers().get(0).getHand().addCard(new Card("ace", "spades"));
         }
         assertFalse(rules[1].isMet(game));
     }
