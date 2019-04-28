@@ -24,6 +24,7 @@ public class Card extends JComponent {
     public Card(String rank, String suit, int value) throws IllegalArgumentException {
         this(rank, suit);
         this.value = value;
+        setBounds(getX(), getY(), WIDTH, HEIGHT);
     }
 
 	public Card(String rank, String suit) throws IllegalArgumentException {
@@ -34,6 +35,7 @@ public class Card extends JComponent {
         this.suit = suit.toLowerCase();
         this.rank = rank.toLowerCase();
 		this.value = defaultValue(rank);
+		setBounds(getX(), getY(), WIDTH, HEIGHT);
 	}
 
     // Accessors
@@ -49,11 +51,6 @@ public class Card extends JComponent {
     public String getRank() {
         return rank;
     }
-
-    // TODO: Make draw func
-    /* public void draw(Frame f) {
-        do something
-    }*/
 
     // Helpers
 
@@ -94,18 +91,21 @@ public class Card extends JComponent {
 		return this.rank.equals(other.getRank()) && this.suit.equals(other.getSuit()) && this.value == other.getValue();
 	}
 
-	@Override
-	public void paint(Graphics g) {
+	public void paint(Graphics g, boolean faceUp) {
     	int x = getX();
     	int y = getY();
-
-    	String fileName = (suit.charAt(0) + "").toUpperCase() + ".png";
-    	if (!rank.equals("10")) {
-    		fileName = (rank.charAt(0) + "").toUpperCase() + fileName;
+		String fileName;
+    	if (faceUp) {
+		    fileName = (suit.charAt(0) + "").toUpperCase() + ".png";
+		    if(!rank.equals("10")) {
+			    fileName = (rank.charAt(0) + "").toUpperCase() + fileName;
+		    } else {
+			    fileName = "10" + fileName;
+		    }
+		    fileName = "cards/" + fileName;
 	    } else {
-		    fileName = "10" + fileName;
+			fileName = "cards/gray_back.png";
 	    }
-	    fileName = "cards/" + fileName;
 
 	    try {
 		    final BufferedImage image = ImageIO.read(new File(ClassLoader.getSystemClassLoader().getResource(fileName).toURI()));

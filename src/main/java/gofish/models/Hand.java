@@ -1,8 +1,12 @@
 package gofish.models;
 
+import gofish.App;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
-public class Hand {
+public class Hand extends JComponent {
     private ArrayList<Card> publicCards;
     private ArrayList<Card> privateCards;
 
@@ -112,11 +116,6 @@ public class Hand {
         publicCards.clear();
     }
 
-    // TODO: Make draw func
-    /* public void draw(Frame f) {
-        do something
-    }*/
-
     // Helpers
 
     /**
@@ -134,5 +133,21 @@ public class Hand {
             return ((Hand) o).getPrivateCards().equals(privateCards) && ((Hand) o).getPublicCards().equals(publicCards);
         }
         return false;
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        int deltaX = (App.WIDTH - Card.WIDTH) / Math.max(privateCards.size(), publicCards.size());
+        int margin = App.WIDTH / Card.WIDTH;
+        for (int i = 0; i < privateCards.size(); i++) {
+            Card c = privateCards.get(i);
+            c.setBounds(getX() + i * deltaX + Card.WIDTH / 4, getY() + Card.HEIGHT, Card.WIDTH, Card.HEIGHT);
+            c.paint(g, true);
+        }
+        for (int i = 0; i < publicCards.size(); i++) {
+            Card c = publicCards.get(i);
+            c.setBounds(getX() + i * deltaX + Card.WIDTH / 4, getY(), Card.WIDTH, Card.HEIGHT);
+            c.paint(g, true);
+        }
     }
 }
