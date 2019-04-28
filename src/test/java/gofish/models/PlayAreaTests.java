@@ -2,7 +2,6 @@ package gofish.models;
 
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
 
 public class PlayAreaTests {
 	private PlayArea playArea;
@@ -19,14 +18,14 @@ public class PlayAreaTests {
 
 	@Test
 	public void testAddingCards() {
-		Card toAdd = new Card("club", "3");
+		Card toAdd = new Card("3", "clubs");
 		playArea.addCard(toAdd);
 		assertTrue(playArea.getCards().contains(toAdd));
 	}
 
 	@Test
 	public void testRemovingCards() {
-		Card toAdd = new Card("club", "3");
+		Card toAdd = new Card("3", "clubs");
 		playArea.addCard(toAdd);
 		playArea.removeCard();
 		assertFalse(playArea.getCards().contains(toAdd));

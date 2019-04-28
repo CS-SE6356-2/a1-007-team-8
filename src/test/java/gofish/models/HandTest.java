@@ -15,8 +15,8 @@ public class HandTest {
     public void populateHand() {
         hand.empty();
         for (int i = 2; i < 7; i++) {
-            Card c = new Card("heart", Integer.toString(i));
-            Card c1 = new Card("spade", Integer.toString(i));
+            Card c = new Card(Integer.toString(i), "hearts");
+            Card c1 = new Card(Integer.toString(i), "spades");
             hand.addCard(c);
             hand.addCard(c1, true);
         }
@@ -40,13 +40,13 @@ public class HandTest {
     // Has should return true for existing card and false for non-existing
     @ParameterizedTest
     @CsvSource({
-        "heart, 6,  true",
-        "heart, 10, false",
-        "spade, 2,  true",
-        "club,  2,  false"
+        "hearts, 6,  true",
+        "hearts, 10, false",
+        "spades, 2,  true",
+        "clubs,  2,  false"
     })
     public void testHandHasCard(String suit, String rank, boolean expectedResult) {
-        Card card = new Card(suit, rank);
+        Card card = new Card(rank, suit);
         assertEquals(hand.hasCard(card), expectedResult);
     }
 
@@ -54,14 +54,14 @@ public class HandTest {
     @Test
     public void testHandIncrementCardCout() {
         int count = hand.getCardCount();
-        hand.addCard(new Card("club", "10"));
+        hand.addCard(new Card("10", "clubs"));
         assertEquals(hand.getCardCount(), ++count);
     }
 
     // Card should not exist in hand after removal
     @Test
     public void testHandRemoveCard() {
-        Card card = new Card("heart", "5");
+        Card card = new Card("5", "hearts");
         assertEquals(hand.hasCard(card), true);
         hand.removeCard(card);
         assertEquals(hand.hasCard(card), false);
@@ -70,7 +70,7 @@ public class HandTest {
     // Card should exist in hand after adding
     @Test
     public void testHandAddCard() {
-        Card card = new Card("diamond", "5");
+        Card card = new Card("5", "diamonds");
         assertEquals(hand.hasCard(card), false);
         hand.addCard(card);
         assertEquals(hand.hasCard(card), true);
@@ -79,7 +79,7 @@ public class HandTest {
     // Test makeCardPublic()
     @Test
     public void testHandMakePublic() {
-        Card card = new Card("heart", "4");
+        Card card = new Card("4", "hearts");
         assertEquals(hand.getPrivateCards().contains(card), true);
         hand.makeCardPublic(card);
         assertEquals(hand.getPrivateCards().contains(card), false);
@@ -89,7 +89,7 @@ public class HandTest {
     // Test makeCardPrivate()
     @Test
     public void testHandMakePrivate() {
-        Card card = new Card("spade", "4");
+        Card card = new Card("4", "spades");
         assertEquals(hand.getPublicCards().contains(card), true);
         hand.makeCardPrivate(card);
         assertEquals(hand.getPublicCards().contains(card), false);

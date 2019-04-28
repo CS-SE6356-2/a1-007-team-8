@@ -36,7 +36,7 @@ public class DeckTests {
 
 	@Test
 	public void testAddingCard() {
-		Card toAdd = new Card("heart", "jack");
+		Card toAdd = new Card("jack", "hearts");
 		while (deck.getCards().contains(toAdd)) {
 			deck.getCards().remove(toAdd);
 		}
