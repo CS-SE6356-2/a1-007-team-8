@@ -1,5 +1,6 @@
 package gofish.controllers;
 
+import gofish.App;
 import gofish.models.*;
 
 import java.awt.event.ActionEvent;
@@ -49,6 +50,7 @@ public class GameController {
 			return null;
 		}
 		turnNumber++;
+		App.log("Turn number: "+turnNumber);
 		ArrayList<Player> players = game.getPlayers();
 		Player nextPlayer = players.get(turnNumber % players.size());
 		game.setActivePlayer(nextPlayer);
@@ -61,6 +63,7 @@ public class GameController {
 	 * @return true if successfully added, false otherwise
 	 */
 	public boolean addPlayer(Player p) {
+		p.setId(game.getPlayers().size());
 		game.getPlayers().add(p);
 		if (!checkRule("maxPlayers")) {
 			removePlayer(); // Remove most recently added player
@@ -150,6 +153,10 @@ public class GameController {
 			}
 		}
 		return null;
+	}
+
+	public Player getActivePlayer() {
+		return game.getActivePlayer();
 	}
 
 	/**

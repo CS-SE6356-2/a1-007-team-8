@@ -3,13 +3,14 @@ package gofish.models;
 public class Player {
 	private String name;
 	private Hand hand;
-	private int score, wins;
+	private int score, wins, id;
 
 	public Player() {
 		this.name = "Player";
 		this.hand = new Hand();
 		this.score = 0;
 		this.wins = 0;
+		this.id = -1;
 	}
 
 	public Player(String name) {
@@ -33,6 +34,10 @@ public class Player {
 		this.wins = wins;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -49,10 +54,14 @@ public class Player {
 		return wins;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Player) {
-			return ((Player) o).getHand().equals(hand) && ((Player) o).getName().equals(name) && ((Player) o).getScore() == score && ((Player) o).getWins() == wins;
+			return ((Player) o).getHand().equals(hand) && ((Player) o).getName().equals(name) && ((Player) o).getScore() == score && ((Player) o).getWins() == wins && ((Player) o).getId() == id;
 		}
 		return false;
 	}
