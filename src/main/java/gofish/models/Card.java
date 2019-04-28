@@ -1,10 +1,15 @@
 package gofish.models;
 
+import gofish.App;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 
-public class Card {
+public class Card extends JComponent {
 	static final String[] SUITS = {"clubs", "spades", "diamonds", "hearts"};
 	static final String[] RANKS = {"ace", "king", "queen", "jack", "joker", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+	static final int WIDTH = 100;
+	static final int HEIGHT = 140;
     private int value;
     private String suit, rank;
 
@@ -81,5 +86,14 @@ public class Card {
             return false;
         Card other = (Card) o;
 		return this.rank.equals(other.getRank()) && this.suit.equals(other.getSuit()) && this.value == other.getValue();
+	}
+
+	@Override
+	public void paint(Graphics g) {
+    	int x = getX();
+    	int y = getY();
+    	App.log("painting");
+    	g.setColor(new Color(0xFFFFFF));
+    	g.fillRect(x, y, WIDTH, HEIGHT);
 	}
 }

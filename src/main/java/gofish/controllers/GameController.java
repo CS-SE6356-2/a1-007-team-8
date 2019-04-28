@@ -69,6 +69,12 @@ public class GameController {
 		return true;
 	}
 
+	public void reset() {
+		turnNumber = 0;
+		roundNumber = 0;
+		game = new Game(game.getName());
+	}
+
 	/**
 	 * Remove the last player
 	 * @return The player removed

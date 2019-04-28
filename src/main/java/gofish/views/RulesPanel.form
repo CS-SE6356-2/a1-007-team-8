@@ -24,6 +24,8 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-1118482"/>
+          <editable value="false"/>
           <text value="SETUP&#10;&#10;Five cards are dealt from a standard 52-card deck to each player, or seven cards if there are three or fewer players. The remaining cards form the draw deck in the middle of the play area called &quot;ocean&quot;.&#10;&#10;PLAY&#10;&#10;On their turn, a player requests cards by face value, called &quot;rank&quot;, from another player. The requesting player may only request a particular rank if they already have at least one matching card in their hand. The player from which the cards were requested must hand over all matching cards in their hand to the requesting player. If the requestee has no matching cards in their hand they tell the requester to &quot;Go Fish&quot;, after which the requester must draw a card from the ocean and place it in their hand. If the requester receives one or more cards of their requested rank, either from the requestee or after randomly drawing it from the ocean, the requester shows the cards to the other players and repeats their turn. A turn ends and the play transfers to the next player when no cards matching the requested rank are received by the requester.&#10;&#10;SCORING&#10;&#10;When any player at any time has all four cards of one face value, forming a &quot;book&quot;, the cards must be placed face up in front of that player. Each book is one point.&#10;&#10;WINNING&#10;&#10;When all sets of cards have been laid down in books, the game ends. The player with the most books wins."/>
         </properties>
       </component>
