@@ -8,9 +8,13 @@ import gofish.models.Player;
 import gofish.views.Frame;
 import gofish.views.MainMenu;
 
+import java.awt.image.ImageObserver;
+
 public class App {
 
 	public static boolean verbose = true;
+	public static final int WIDTH = 500;
+	public static final int HEIGHT = 623;
 
 	// Define rules
 	public static final Rule[] RULES = new Rule[]{
@@ -44,19 +48,17 @@ public class App {
 
 		// Initialize GameController w/ frame
 		GameController gc = new GoFishController("Go Fish", RULES);
-		Frame frame = new Frame("Go Fish", 500, 629, 0xFF0000);
+		Frame frame = new Frame("Go Fish", WIDTH, HEIGHT, 0xFF0000);
 		frame.setLocationRelativeTo(null);
 		gc.setFrame(frame);
 		gc.loadPanel(new MainMenu(gc).getView());
-
-
 	}
 
 	/**
 	 * Outputs the given string to console IF verbose output is requested.
 	 * @param s The String to output to console.
 	 */
-	public static void log(String s) {
+	public static void log(Object s) {
 		if (verbose) {
 			System.out.println(s);
 		}
