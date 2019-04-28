@@ -1,18 +1,30 @@
 package gofish.controllers;
 
 import gofish.models.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
+import gofish.views.*;
+
+import javax.swing.*;
 
 public class GameController {
 	protected Game game;
 	protected int turnNumber, roundNumber;
 	protected Rule[] rules;
+	protected Frame frame;
+	private static boolean verbose = false;
+
+	/* Game Controller */
 
 	public GameController() {
+	 	frame = createFrame();
 		turnNumber = 0;
 		roundNumber = 0;
 		rules = new Rule[]{};
 		game = new Game();
+		frame.loadMainMenu(new MainMenuPlayBtn(), new MainMenuRulesBtn(), new MainMenuQuitBtn());
 	}
 
 	public GameController(Game game, Rule[] rules) {
@@ -186,5 +198,61 @@ public class GameController {
 			}
 		}
 		return brokenRules;
+	}
+
+	/* ----- LISTENERS ----- */
+
+	private class MainMenuPlayBtn implements ActionListener {
+		public MainMenuPlayBtn() {}
+
+		public void actionPerformed(ActionEvent e) {
+			frame.clear();
+		}
+	}
+
+	private class MainMenuRulesBtn implements ActionListener {
+		public MainMenuRulesBtn() {}
+
+		public void actionPerformed(ActionEvent e) {
+			frame.clear();
+		}
+	}
+
+	private class MainMenuQuitBtn implements ActionListener {
+		public MainMenuQuitBtn() {}
+
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+		}
+	}
+
+	/* ----- MAIN ----- */
+
+	public static void main(String args[]) {
+		// Set verbose based on input
+		for (String arg : args)
+			if (arg.toLowerCase().equals("-v"))
+				verbose = true;
+
+		log("Launching");
+
+		// Create the game controller and main menu
+		new GameController();
+	}
+
+	private static Frame createFrame() {
+		Frame frame = new Frame("Go Fish", 500, 500, 0);
+		frame.setLocationRelativeTo(null);
+		return frame;
+	}
+
+	/**
+	 * Outputs the given string to console IF verbose output is requested.
+	 * @param s The String to output to console.
+	 */
+	public static void log(String s) {
+		if (verbose) {
+			System.out.println(s);
+		}
 	}
 }
