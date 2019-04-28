@@ -61,13 +61,13 @@ public class PlayScreen {
 
     private void createUIComponents() {
         // Place custom component creation code here
-        opponentPanel = new JPanel();
 
-        /* ----- Setup panel ----- */
+        /* ----- Setup Opponent Panel ----- */
+        opponentPanel = new JPanel();
         Player activePlayer = gc.getActivePlayer();
         //Populate opponent panel
         for (Player p : gc.getPlayers()) {
-            if (p != activePlayer) {
+            if (p.getId() != activePlayer.getId()) {
                 // Create a button for each opponent
                 JButton btn = new JButton(p.getName());
                 btn.addActionListener(new EventListener((ActionEvent event) -> {
@@ -79,5 +79,8 @@ public class PlayScreen {
                 opponentPanel.add(btn);
             }
         }
+
+        /* ----- Setup Player Panel ----- */
+        playerPanel = new JPanel();
     }
 }
