@@ -4,7 +4,7 @@ import gofish.models.Game;
 
 public class Rule {
 
-    interface RuleChecker {
+    public interface RuleChecker {
         /**
          * Check if rule is violated or not
          * @param game current game state
@@ -14,7 +14,7 @@ public class Rule {
         boolean isMet(Game game, int value);
     }
 
-    interface ValueCalculator {
+    public interface ValueCalculator {
         /**
          * Calculate the value for the rule based on the game state
          * @param game The current game state

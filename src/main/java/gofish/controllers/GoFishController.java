@@ -7,6 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GoFishController extends GameController {
+
+    public GoFishController(String name, Rule[] rules) {
+        super(name, rules);
+    }
+
     @Override
     public Player checkWinner() {
         Player maxScorePlayer = null;
@@ -34,7 +39,7 @@ public class GoFishController extends GameController {
         return false;
     }
 
-    public boolean hasBook(Player p) {
+    public Card hasBook(Player p) {
         Map<String, Integer> ranks = new HashMap<>();
         for (Card c : p.getHand().getPrivateCards()) {
             String rank = c.getRank();
@@ -46,9 +51,9 @@ public class GoFishController extends GameController {
         }
         for (String key : ranks.keySet()) {
             if (ranks.get(key) >= 4) {
-                return true;
+                return new Card(key, "spades");
             }
         }
-        return false;
+        return null;
     }
 }

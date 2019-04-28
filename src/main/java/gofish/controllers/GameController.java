@@ -19,12 +19,10 @@ public class GameController {
 	/* Game Controller */
 
 	public GameController() {
-	 	frame = createFrame();
 		turnNumber = 0;
 		roundNumber = 0;
 		rules = new Rule[]{};
 		game = new Game();
-		frame.loadPanel(new MainMenu(this).getView());
 	}
 
 	public GameController(Game game, Rule[] rules) {
@@ -202,38 +200,11 @@ public class GameController {
 
 	public Frame getFrame() { return frame; }
 
+	public void setFrame(Frame frame) { this.frame = frame; }
+
 	// Loads a given JPanel to the frame
 	public void loadPanel(JPanel panel) {
 		frame.loadPanel(panel);
 		frame.pack();
-	}
-
-	/* ----- MAIN ----- */
-
-	public static void main(String args[]) {
-		// Set verbose based on input
-		for (String arg : args)
-			if (arg.toLowerCase().equals("-v"))
-				verbose = true;
-
-		log("Launching");
-
-		// Create the game controller and main menu
-		new GameController();
-	}
-
-	private static Frame createFrame() {
-		Frame frame = new Frame("Go Fish", 750, 500, 0);
-		return frame;
-	}
-
-	/**
-	 * Outputs the given string to console IF verbose output is requested.
-	 * @param s The String to output to console.
-	 */
-	public static void log(String s) {
-		if (verbose) {
-			System.out.println(s);
-		}
 	}
 }

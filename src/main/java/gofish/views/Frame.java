@@ -11,14 +11,12 @@ public class Frame extends JFrame {
         super(name);
         this.width = width;
         this.height = height;
-        backgroundColor = bgColor;
+        this.backgroundColor = bgColor;
+        this.setPreferredSize(new Dimension(width, height));
+        this.setBackground(Color.RED);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setPreferredSize(new Dimension(width, height));
     }
-
-    public void render() {}
-
-    public void win(Player winner) {}
 
     public void loadPanel(JPanel panel) {
        // clear();
