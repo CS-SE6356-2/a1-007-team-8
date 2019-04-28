@@ -2,6 +2,7 @@ package gofish.views;
 
 import gofish.models.Player;
 import javax.swing.*;
+import java.awt.*;
 
 public class Frame extends JFrame {
     private int width, height, backgroundColor;
@@ -12,6 +13,7 @@ public class Frame extends JFrame {
         this.height = height;
         backgroundColor = bgColor;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setPreferredSize(new Dimension(width, height));
     }
 
     public void render() {}

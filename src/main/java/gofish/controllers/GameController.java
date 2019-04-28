@@ -202,6 +202,12 @@ public class GameController {
 
 	public Frame getFrame() { return frame; }
 
+	// Loads a given JPanel to the frame
+	public void loadPanel(JPanel panel) {
+		frame.loadPanel(panel);
+		frame.pack();
+	}
+
 	/* ----- MAIN ----- */
 
 	public static void main(String args[]) {
@@ -217,8 +223,7 @@ public class GameController {
 	}
 
 	private static Frame createFrame() {
-		Frame frame = new Frame("Go Fish", 500, 500, 0);
-		frame.setLocationRelativeTo(null);
+		Frame frame = new Frame("Go Fish", 750, 500, 0);
 		return frame;
 	}
 
