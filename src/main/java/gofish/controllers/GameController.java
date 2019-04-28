@@ -20,7 +20,7 @@ public class GameController {
 	/* Game Controller */
 
 	public GameController() {
-		turnNumber = -1;
+		turnNumber = 0;
 		roundNumber = 0;
 		rules = new Rule[]{};
 		game = new Game();
@@ -73,7 +73,7 @@ public class GameController {
 	}
 
 	public void reset() {
-		turnNumber = -1;
+		turnNumber = 0;
 		roundNumber = 0;
 		game = new Game(game.getName());
 	}
