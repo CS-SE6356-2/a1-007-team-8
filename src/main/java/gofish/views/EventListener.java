@@ -20,12 +20,16 @@ public class Event implements ActionListener {
     /**
      * Manipulates the GameController based on the ActionEvent received
      */
-    private interface EventHandler {
+    public interface EventHandler {
         void handle(ActionEvent e, GameController gc);
     }
 
     public Event(GameController gc, EventHandler handler) {
         this.gc = gc;
         this.handler = handler;
+    }
+
+    public static void main(String[] args) {
+        Event e = new Event(gc, () ->)
     }
 }
