@@ -38,6 +38,13 @@ public class PlayScreen {
         this.gc = gc;
         $$$setupUI$$$();
 
+        for (Player p : gc.getPlayers()) {
+            App.log(p.getName() + ":");
+            for (Card c : p.getHand().getPrivateCards()) {
+                App.log("\t" + c);
+            }
+            App.log("");
+        }
         requestPlayerLabel.setText("Request cards from: ");
         requestCardLabel.setText("Request card rank: ");
         activePlayerLabel.setText("Current Player: " + gc.getActivePlayer().getName());
@@ -95,6 +102,7 @@ public class PlayScreen {
                 }
                 //gc.loadPanel(new PlayScreen(gc).getView());
             }
+            gc.getFrame().pack();
         }));
     }
 
@@ -127,16 +135,7 @@ public class PlayScreen {
                 playerInfo.add(btn);
 
                 playerInfo.add(new JLabel("(" + p.getHand().getPrivateCards().size() + " cards)"));
-                Set<Card> books = new HashSet<>(p.getHand().getPublicCards());
-                String bookList = "";
-                for (Card c : books) {
-                    bookList += c.getRank() + ", ";
-                }
-
-                if(books.size() > 0) {
-                    bookList = bookList.substring(bookList.length() - 3);
-                }
-                playerInfo.add(new JLabel("books: " + bookList));
+                playerInfo.add(new JLabel("score: " + p.getHand().getPublicCards().size()));
                 opponentPanel.add(playerInfo);
             } else {
                 JPanel cardWrapper = new JPanel();
@@ -171,7 +170,7 @@ public class PlayScreen {
         JButton card = new JButton(new ImageIcon(c.getImage(true)));
         card.setBorder(BorderFactory.createEmptyBorder());
         card.setContentAreaFilled(false);
-        playerPanel.add(card);
+        ((JPanel)(playerPanel.getComponents()[0])).add(card);
     }
 
     /**
