@@ -15,7 +15,6 @@ public class GameController {
 	protected int turnNumber, roundNumber;
 	protected Rule[] rules;
 	protected Frame frame;
-	private static boolean verbose = false;
 
 	/* Game Controller */
 
@@ -24,18 +23,21 @@ public class GameController {
 		roundNumber = 0;
 		rules = new Rule[]{};
 		game = new Game();
+		this.game.getDecks().add(new Deck());
 	}
 
 	public GameController(Game game, Rule[] rules) {
 		this();
 		this.game = game;
 		this.rules = rules;
+		this.game.getDecks().add(new Deck());
 	}
 
 	public GameController(String name, Rule[] rules) {
 		this();
 		this.game = new Game(name);
 		this.rules = rules;
+		this.game.getDecks().add(new Deck());
 	}
 
 	/**
@@ -76,6 +78,7 @@ public class GameController {
 		turnNumber = 0;
 		roundNumber = 0;
 		game = new Game(game.getName());
+		this.game.getDecks().add(new Deck());
 	}
 
 	public boolean addPlayers(Player[] players) {
@@ -129,6 +132,7 @@ public class GameController {
 	 * @param p Player to deal to
 	 */
 	public void deal(Player p) {
+		App.log(game.getDecks());
 		Deck dealingDeck = game.getDecks().get(0);
 		int dealCardCount = getRuleValue("dealCardCount");
 		for (int i = 0; i < dealCardCount; i++) {
