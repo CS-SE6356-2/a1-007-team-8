@@ -12,10 +12,9 @@ public class Frame extends JFrame {
         this.width = width;
         this.height = height;
         this.backgroundColor = bgColor;
-        this.setPreferredSize(new Dimension(width, height));
+        this.setMinimumSize(new Dimension(width, height));
         this.setBackground(new Color(bgColor));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(width, height));
     }
 
     public void loadPanel(JPanel panel) {
