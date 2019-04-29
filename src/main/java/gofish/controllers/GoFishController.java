@@ -58,7 +58,7 @@ public class GoFishController extends GameController {
         return false;
     }
 
-    public Card hasBook(Player p) {
+    public static Card hasBook(Player p) {
         Map<String, Integer> ranks = new HashMap<>();
         for (Card c : p.getHand().getPrivateCards()) {
             String rank = c.getRank();

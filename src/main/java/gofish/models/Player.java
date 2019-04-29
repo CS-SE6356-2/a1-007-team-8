@@ -1,5 +1,7 @@
 package gofish.models;
 
+import gofish.controllers.GoFishController;
+
 public class Player {
 	private String name;
 	private Hand hand;
@@ -64,6 +66,19 @@ public class Player {
 			return ((Player) o).getHand().equals(hand) && ((Player) o).getName().equals(name) && ((Player) o).getScore() == score && ((Player) o).getWins() == wins && ((Player) o).getId() == id;
 		}
 		return false;
+	}
+
+	public void checkForBooks() {
+		Card book = GoFishController.hasBook(this);
+		while (book != null) {
+			hand.tagBook(book);
+			book = GoFishController.hasBook(this);
+		}
+		calculateScore();
+	}
+
+	public void calculateScore() {
+		score = getHand().getPublicCards().size();
 	}
 
 	// TODO: Make draw func

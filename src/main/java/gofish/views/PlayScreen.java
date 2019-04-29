@@ -64,6 +64,7 @@ public class PlayScreen {
                     for (Card c : matchedCards) {
                         addPlayerCard(c);
                     }
+                    gc.getActivePlayer().checkForBooks();
                     gofish = false;
                     foundMatch = true;
                 } else {
@@ -78,6 +79,7 @@ public class PlayScreen {
                     gofish = false;
                     Card dealtCard = gc.dealSingleCard(gc.getActivePlayer());
                     addPlayerCard(dealtCard);
+                    gc.getActivePlayer().checkForBooks();
                     if (dealtCard.getRank().equals(requestCard.getRank())) {
                         // Received a matching card
                         matchLabel.setText("Drew a matching card!" + dealtCard.getRank() + " of " + dealtCard.getSuit() + ".");
