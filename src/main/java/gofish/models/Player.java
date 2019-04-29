@@ -74,6 +74,11 @@ public class Player {
 			hand.tagBook(book);
 			book = GoFishController.hasBook(this);
 		}
+		calculateScore();
+	}
+
+	public void calculateScore() {
+		score = getHand().getPublicCards().size();
 	}
 
 	// TODO: Make draw func
