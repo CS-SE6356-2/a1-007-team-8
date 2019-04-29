@@ -71,11 +71,11 @@ public class PlayScreen {
                     addPlayerCard(dealtCard);
                     if (dealtCard.getRank() == requestCard.getRank()) {
                         // Received a matching card
-                        matchLabel.setText("Drew a matching card!" + dealtCard.getRank() + " of " + dealtCard.getSuit()+".");
+                        matchLabel.setText("Drew a matching card!" + dealtCard.getRank() + " of " + dealtCard.getSuit() + ".");
                         requestBtn.setText("Go Again");
                         foundMatch = true;
                     } else {
-                        matchLabel.setText("Drew a " + dealtCard.getRank() + " of " + dealtCard.getSuit()+".");
+                        matchLabel.setText("Drew a " + dealtCard.getRank() + " of " + dealtCard.getSuit() + ".");
                         requestBtn.setText("End Turn");
                         foundMatch = false;
                     }
