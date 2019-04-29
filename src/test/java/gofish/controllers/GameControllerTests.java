@@ -51,7 +51,9 @@ public class GameControllerTests {
     @Test
     public void testWinnerChecking() {
         assertNull(gc.checkWinner());
-        game.getPlayers().get(0).setScore(200);
+        for (int i = 0; i < 101; i++) {
+            gc.getPlayers().get(0).getHand().getPublicCards().add(new Card("ace", "spades"));
+        }
         assertNotNull(gc.checkWinner());
     }
 
@@ -64,7 +66,9 @@ public class GameControllerTests {
             assertEquals(players.get(i), game.getActivePlayer());
             assertEquals(gc.advanceTurn(), players.get((i + 1) % players.size()));
         }
-        players.get(0).setScore(200);
+        for (int i = 0; i < 101; i++) {
+            gc.getPlayers().get(0).getHand().getPublicCards().add(new Card("ace", "spades"));
+        }
         gc.advanceTurn();
         assertNotNull(gc.checkWinner());
         assertEquals(gc.checkWinner().getWins(), 1);
