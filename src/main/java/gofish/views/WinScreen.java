@@ -28,19 +28,19 @@ public class WinScreen {
 			System.exit(0);
 		}));
 		ArrayList<Player> topPlayers = gc.getTopPlayers();
-		if(topPlayers.size() > 1) {
+		if (topPlayers.size() > 1) {
 			String winners = "";
-			for(int i = 0; i < topPlayers.size(); i++) {
+			for (int i = 0; i < topPlayers.size(); i++) {
 				Player p = topPlayers.get(i);
 				winners += p.getName();
-				if(i < topPlayers.size() - 2) {
+				if (i < topPlayers.size() - 2) {
 					winners += ", ";
-				} else if(i != topPlayers.size() - 1) {
+				} else if (i != topPlayers.size() - 1) {
 					winners += ", and ";
 				}
 			}
 			winMessage.setText("It\'s a tie between " + winners);
-		} else if(topPlayers.size() == 1) {
+		} else if (topPlayers.size() == 1) {
 			winMessage.setText(topPlayers.get(0).getName() + " wins!");
 		}
 	}
@@ -63,38 +63,38 @@ public class WinScreen {
 	 */
 	private void $$$setupUI$$$() {
 		createUIComponents();
-		winScreenView.setLayout(new GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
+		winScreenView.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(2, 2, new Insets(0, 0, 0, 0), -1, -1));
 		final JPanel panel1 = new JPanel();
-		panel1.setLayout(new GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
-		winScreenView.add(panel1, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+		panel1.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(2, 1, new Insets(0, 0, 0, 0), -1, -1));
+		winScreenView.add(panel1, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
 		Font winMessageFont = this.$$$getFont$$$(null, -1, 20, winMessage.getFont());
-		if(winMessageFont != null) winMessage.setFont(winMessageFont);
+		if (winMessageFont != null) winMessage.setFont(winMessageFont);
 		winMessage.setText("Player Wins!");
-		panel1.add(winMessage, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		panel1.add(winMessage, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		final JLabel label1 = new JLabel();
 		Font label1Font = this.$$$getFont$$$(null, -1, 18, label1.getFont());
-		if(label1Font != null) label1.setFont(label1Font);
+		if (label1Font != null) label1.setFont(label1Font);
 		label1.setText("Do you want to play again?");
-		panel1.add(label1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		panel1.add(label1, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		yesButton = new JButton();
 		yesButton.setText("Yes");
-		winScreenView.add(yesButton, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		winScreenView.add(yesButton, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 		noButton = new JButton();
 		noButton.setText("No");
-		winScreenView.add(noButton, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		winScreenView.add(noButton, new com.intellij.uiDesigner.core.GridConstraints(1, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
 	}
 
 	/**
 	 * @noinspection ALL
 	 */
 	private Font $$$getFont$$$(String fontName, int style, int size, Font currentFont) {
-		if(currentFont == null) return null;
+		if (currentFont == null) return null;
 		String resultName;
-		if(fontName == null) {
+		if (fontName == null) {
 			resultName = currentFont.getName();
 		} else {
 			Font testFont = new Font(fontName, Font.PLAIN, 10);
-			if(testFont.canDisplay('a') && testFont.canDisplay('1')) {
+			if (testFont.canDisplay('a') && testFont.canDisplay('1')) {
 				resultName = fontName;
 			} else {
 				resultName = currentFont.getName();
@@ -109,4 +109,5 @@ public class WinScreen {
 	public JComponent $$$getRootComponent$$$() {
 		return winScreenView;
 	}
+
 }

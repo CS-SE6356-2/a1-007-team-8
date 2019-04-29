@@ -49,6 +49,7 @@ public class Player {
 	}
 
 	public int getScore() {
+		calculateScore();
 		return score;
 	}
 
