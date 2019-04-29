@@ -32,6 +32,23 @@ public class GoFishController extends GameController {
         return null;
     }
 
+    public ArrayList<Player> getTopPlayers() {
+        ArrayList<Player> players = new ArrayList<Player>();
+        for (Player p : game.getPlayers()) {
+            if (players.isEmpty()) {
+                players.add(p);
+            } else {
+                if (p.getScore() == players.get(0).getScore()) {
+                    players.add(p);
+                } else if (p.getScore() > players.get(0).getScore()) {
+                    players.clear();
+                    players.add(p);
+                }
+            }
+        }
+        return players;
+    }
+
     public boolean checkMatch(Player p, String rank) {
         for (Card c : p.getHand().getPrivateCards()) {
             if (c.getRank().equals(rank)) {
