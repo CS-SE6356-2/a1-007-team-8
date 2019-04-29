@@ -56,6 +56,9 @@ public class SetupPanel {
                 // Load the play screen
                 gc.advanceTurn();
                 gc.deal();
+                for (Player p : gc.getPlayers()) { // Check if any players have books
+                    p.checkForBooks();
+                }
                 gc.loadPanel(new PlayScreen(gc).getView());
             }
         }));

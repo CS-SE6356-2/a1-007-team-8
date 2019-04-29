@@ -62,6 +62,38 @@ public class Hand {
         return false;
     }
 
+    public boolean removePrivateCard(Card card) {
+        if (privateCards.remove(card))
+            return true;
+        return false;
+    }
+
+    /**
+     * Tags a book matching the rank of the given card
+     * @param card  card with rank that matches book
+     * @return      true if book exists and was removed, else false
+     */
+    public boolean tagBook(Card card) {
+        ArrayList<Card> book = new ArrayList<>();
+        ArrayList<Integer> indexes = new ArrayList<>();
+        int cardCount = 0;
+        for (int i = 0; i < privateCards.size(); i++) {
+            if (privateCards.get(i).getRank() == card.getRank()) {
+                cardCount++;
+                indexes.add(i);
+            }
+        }
+        if (cardCount == 4) {
+            // Book exists, remove it form private cards and mark it in public cards
+            for (int i = 0; i < cardCount; i++) {
+                privateCards.remove(indexes.get(i)-i);
+            }
+            publicCards.add(card);
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Add a card to the hand
      * @param   card        the card to add
