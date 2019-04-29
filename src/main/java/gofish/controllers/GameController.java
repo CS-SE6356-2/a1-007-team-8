@@ -118,13 +118,6 @@ public class GameController {
 		}
 	}
 
-	// Deal a number of cards to all players based on number of players
-	public void initialDeal() {
-		int num = game.getPlayers().size() < 4 ? 7 : 5;
-		for (int i = 0; i<num; i++)
-			deal();
-	}
-
 	/**
 	 * Deal to all players
 	 */
@@ -150,6 +143,18 @@ public class GameController {
 				break;
 			}
 		}
+	}
+
+	// Deals a single card to the given player, returns the dealt card
+	public Card dealSingleCard(Player p) {
+		Deck dealingDeck = game.getDecks().get(0);
+		Card c = dealingDeck.drawCard();
+		p.getHand().addCard(c);
+		if (!checkRule("maxHandSize")) {
+			p.getHand().removeCard(c);
+			return null;
+		}
+		return c;
 	}
 
 	/**

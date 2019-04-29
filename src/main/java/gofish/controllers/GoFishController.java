@@ -1,8 +1,10 @@
 package gofish.controllers;
 
+import gofish.App;
 import gofish.models.Card;
 import gofish.models.Player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,17 +60,21 @@ public class GoFishController extends GameController {
     }
 
     // Checks if the requestee has a card matching the rank of the requested card
-    // If they do --> move all matching cards into requester's hand and return true
-    // Else --> return false
-    public boolean requestCard(Player requester, Player requestee, Card c) {
-        boolean matchFound = false;
-        for (Card rc : requestee.getHand().getPrivateCards()) {
+    // If they do --> move all matching cards into requester's hand and return the matching cards
+    // Else --> return return empty array list
+    public ArrayList<Card> requestCard(Player requester, Player requestee, Card c) {
+        ArrayList<Card> matchedCards = new ArrayList<>();
+        App.log("Request Card: "+c.getRank());
+        for (int i = 0; i < requestee.getHand().getPrivateCards().size(); i++) {
+            Card rc = requestee.getHand().getPrivateCards().get(i);
+            App.log(rc.getRank());
             if (rc.getRank().equals(c.getRank())) {
-                matchFound = true;
+                matchedCards.add(rc);
                 requestee.getHand().removeCard(rc);
                 requester.getHand().addCard(rc, false);
+                i--;
             }
         }
-        return matchFound;
+        return matchedCards;
     }
 }
