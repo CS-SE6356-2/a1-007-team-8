@@ -44,7 +44,7 @@ public class PlayScreen {
 
         /* ----- Listeners ----- */
         mainMenuBtn.addActionListener(new EventListener((ActionEvent event) -> {
-            gc.loadPanel(new MainMenu(gc).getView());
+            gc.loadPanel(new WinScreen(gc).getView());
         }));
         requestBtn.addActionListener(new EventListener((ActionEvent event) -> {
             // If a card has not been requested before
@@ -87,7 +87,11 @@ public class PlayScreen {
                 } else {
                     // A matched card was not found --> next player
                     gc.advanceTurn();
-                    gc.loadPanel(new PlayScreen(gc).getView());
+                    if(gc.checkWinner() != null) {
+                        gc.loadPanel(new WinScreen(gc).getView());
+                    } else {
+                        gc.loadPanel(new PlayScreen(gc).getView());
+                    }
                 }
                 //gc.loadPanel(new PlayScreen(gc).getView());
             }
@@ -129,7 +133,7 @@ public class PlayScreen {
                     bookList += c.getRank() + ", ";
                 }
                 if(books.size() > 0) {
-                    bookList = bookList.substring(bookList.length() - 2);
+                    bookList = bookList.substring(bookList.length() - 3);
                 }
                 playerInfo.add(new JLabel("books: " + bookList));
                 opponentPanel.add(playerInfo);
