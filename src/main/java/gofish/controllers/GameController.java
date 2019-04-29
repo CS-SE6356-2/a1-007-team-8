@@ -75,7 +75,7 @@ public class GameController {
 	}
 
 	public void reset() {
-		turnNumber = 0;
+		turnNumber = -1;
 		roundNumber = 0;
 		game = new Game(game.getName());
 		this.game.getDecks().add(new Deck());
@@ -116,6 +116,13 @@ public class GameController {
 		} catch	(IndexOutOfBoundsException e) {
 			return null;
 		}
+	}
+
+	// Deal a number of cards to all players based on number of players
+	public void initialDeal() {
+		int num = game.getPlayers().size() < 4 ? 7 : 5;
+		for (int i = 0; i<num; i++)
+			deal();
 	}
 
 	/**

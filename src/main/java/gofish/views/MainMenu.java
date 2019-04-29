@@ -4,6 +4,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import gofish.controllers.GameController;
+import gofish.controllers.GoFishController;
 import gofish.models.Card;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class MainMenu {
     private JButton rulesButton;
     private JButton quitButton;
 
-    public MainMenu(GameController gc) {
+    public MainMenu(GoFishController gc) {
         // Assign buttons to listeners
         $$$setupUI$$$();
         playButton.addActionListener(new EventListener((ActionEvent event) -> {

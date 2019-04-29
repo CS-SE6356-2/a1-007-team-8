@@ -3,6 +3,7 @@ package gofish.views;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import gofish.controllers.GameController;
+import gofish.controllers.GoFishController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class RulesPanel {
     private JTextPane rulesTextPane;
     private JButton backBtn;
 
-    public RulesPanel(GameController gc) {
+    public RulesPanel(GoFishController gc) {
         backBtn.addActionListener(new EventListener((ActionEvent event) -> {
             gc.loadPanel(new MainMenu(gc).getView());
         }));

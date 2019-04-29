@@ -56,4 +56,19 @@ public class GoFishController extends GameController {
         }
         return null;
     }
+
+    // Checks if the requestee has a card matching the rank of the requested card
+    // If they do --> move all matching cards into requester's hand and return true
+    // Else --> return false
+    public boolean requestCard(Player requester, Player requestee, Card c) {
+        boolean matchFound = false;
+        for (Card rc : requestee.getHand().getPrivateCards()) {
+            if (rc.getRank().equals(c.getRank())) {
+                matchFound = true;
+                requestee.getHand().removeCard(rc);
+                requester.getHand().addCard(rc, false);
+            }
+        }
+        return matchFound;
+    }
 }
