@@ -63,4 +63,10 @@ public class App {
 			System.out.println(s);
 		}
 	}
+
+	public static void logNoNewline(Object s) {
+		if (verbose) {
+			System.out.print(s);
+		}
+	}
 }
