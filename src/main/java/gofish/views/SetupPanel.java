@@ -36,29 +36,29 @@ public class SetupPanel {
         playBtn.addActionListener(new EventListener((ActionEvent event) -> {
             // Check that player count is valid
             int numLines = countLines(playerNames.getText());
-            if(numLines < MINP || numLines > MAXP)
+            if (numLines < MINP || numLines > MAXP)
                 new InvalidPlayerCount(gc, numLines);
             else {
                 // Reset the game before creating a new one
                 gc.reset();
                 // Add new players
-                for(String name : playerNames.getText().split("\\n")) {
+                for (String name : playerNames.getText().split("\\n")) {
                     name = name.strip();
-                    if(!name.isEmpty()) {
-                        if(!gc.addPlayer(new Player(name)))
+                    if (!name.isEmpty()) {
+                        if (!gc.addPlayer(new Player(name)))
                             ; //Error has occurred
                     }
                 }
                 // Log names to console
-                if(App.verbose) {
+                if (App.verbose) {
                     App.log("Player names:");
-                    for(Player p : gc.getPlayers())
+                    for (Player p : gc.getPlayers())
                         App.log("*" + p.getName() + "*");
                 }
                 // Load the play screen
                 gc.advanceTurn();
                 gc.deal();
-                for(Player p : gc.getPlayers()) { // Check if any players have books
+                for (Player p : gc.getPlayers()) { // Check if any players have books
                     p.checkForBooks();
                 }
                 gc.loadPanel(new PlayScreen(gc).getView());
@@ -68,9 +68,9 @@ public class SetupPanel {
 
     private int countLines(String str) {
         int numLines = 0;
-        for(String line : playerNames.getText().split("\\n")) {
+        for (String line : playerNames.getText().split("\\n")) {
             line = line.strip();
-            if(!line.isEmpty())
+            if (!line.isEmpty())
                 numLines++;
         }
         return numLines;
@@ -96,37 +96,37 @@ public class SetupPanel {
      */
     private void $$$setupUI$$$() {
         setupView = new JPanel();
-        setupView.setLayout(new GridLayoutManager(4, 2, new Insets(0, 0, 0, 0), -1, -1));
+        setupView.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 2, new Insets(0, 0, 0, 0), -1, -1));
         title = new JLabel();
         Font titleFont = this.$$$getFont$$$(null, -1, 20, title.getFont());
-        if(titleFont != null) title.setFont(titleFont);
+        if (titleFont != null) title.setFont(titleFont);
         title.setText("Setup");
-        setupView.add(title, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        setupView.add(title, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         mainMenuBtn = new JButton();
         mainMenuBtn.setText("Back");
-        setupView.add(mainMenuBtn, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        setupView.add(mainMenuBtn, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         playBtn = new JButton();
         playBtn.setText("Play");
-        setupView.add(playBtn, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        setupView.add(playBtn, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         playerNames = new JTextArea();
         playerNames.setRows(15);
-        setupView.add(playerNames, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        setupView.add(playerNames, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         instructions = new JLabel();
         instructions.setText("Enter one player name per line.");
-        setupView.add(instructions, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        setupView.add(instructions, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
      * @noinspection ALL
      */
     private Font $$$getFont$$$(String fontName, int style, int size, Font currentFont) {
-        if(currentFont == null) return null;
+        if (currentFont == null) return null;
         String resultName;
-        if(fontName == null) {
+        if (fontName == null) {
             resultName = currentFont.getName();
         } else {
             Font testFont = new Font(fontName, Font.PLAIN, 10);
-            if(testFont.canDisplay('a') && testFont.canDisplay('1')) {
+            if (testFont.canDisplay('a') && testFont.canDisplay('1')) {
                 resultName = fontName;
             } else {
                 resultName = currentFont.getName();
@@ -141,4 +141,5 @@ public class SetupPanel {
     public JComponent $$$getRootComponent$$$() {
         return setupView;
     }
+
 }
