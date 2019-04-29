@@ -68,10 +68,6 @@ public class PlayScreen {
                     requestPlayerLabel.setText("Request cards from: " + p.getName());
                 }));
                 opponentPanel.add(btn);
-
-                JTextArea cards = new JTextArea();
-                cards.setText(p.getHand().getCards().toString());
-                opponentPanel.add(cards);
             } else {
                 for (Card c : p.getHand().getPrivateCards()) {
                     JButton card = new JButton(new ImageIcon(c.getImage(true)));
