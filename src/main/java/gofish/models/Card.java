@@ -105,12 +105,15 @@ public class Card {
 		}
 
 		try {
-			final BufferedImage image = ImageIO.read(new File(ClassLoader.getSystemClassLoader().getResource(fileName).toURI()));
-			return image;
+			return ImageIO.read(new File(ClassLoader.getSystemClassLoader().getResource(fileName).toURI()));
 		} catch (IOException | URISyntaxException e) {
 			App.log("Failed to load card resource (" + fileName + ")");
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public String toString() {
+    	return rank + " of " + suit;
 	}
 }
