@@ -2,6 +2,7 @@ package gofish.views;
 
 import gofish.App;
 import gofish.controllers.GameController;
+import gofish.controllers.GoFishController;
 import gofish.models.Player;
 
 import javax.swing.*;
@@ -18,7 +19,7 @@ public class SetupPanel {
 
     int MAXP, MINP;
 
-    public SetupPanel(GameController gc) {
+    public SetupPanel(GoFishController gc) {
         // Get allowed max/min players
         MAXP = gc.getRuleValue("maxPlayers");
         MINP = gc.getRuleValue("minPlayers");
@@ -54,6 +55,7 @@ public class SetupPanel {
                 }
                 // Load the play screen
                 gc.advanceTurn();
+                gc.deal();
                 gc.loadPanel(new PlayScreen(gc).getView());
             }
         }));

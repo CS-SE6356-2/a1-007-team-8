@@ -3,6 +3,7 @@ package gofish.views;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import gofish.controllers.GameController;
+import gofish.controllers.GoFishController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ public class QuitScreen {
     private JButton noButton;
     private JPanel quitView;
 
-    public QuitScreen(GameController gc) {
+    public QuitScreen(GoFishController gc) {
         yesButton.addActionListener(new EventListener((ActionEvent event) -> {
             System.exit(0);
         }));

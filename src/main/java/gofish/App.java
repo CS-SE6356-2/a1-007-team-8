@@ -47,7 +47,7 @@ public class App {
 		log("Launching");
 
 		// Initialize GameController w/ frame
-		GameController gc = new GoFishController("Go Fish", RULES);
+		GoFishController gc = new GoFishController("Go Fish", RULES);
 		Frame frame = new Frame("Go Fish", WIDTH, HEIGHT, 0xFF0000);
 		frame.setLocationRelativeTo(null);
 		gc.setFrame(frame);
