@@ -48,13 +48,13 @@ public class PlayScreen {
         }));
         requestBtn.addActionListener(new EventListener((ActionEvent event) -> {
             // If a card has not been requested before
-            if(!requestedCards && requestCard != null && requestPlayer != null) {
+            if (!requestedCards && requestCard != null && requestPlayer != null) {
                 requestedCards = true;
                 ArrayList<Card> matchedCards = gc.requestCard(gc.getActivePlayer(), requestPlayer, requestCard);
-                if(matchedCards.size() > 0) {
+                if (matchedCards.size() > 0) {
                     matchLabel.setText("Match found!");
                     requestBtn.setText("Go Again");
-                    for(Card c : matchedCards) {
+                    for (Card c : matchedCards) {
                         addPlayerCard(c);
                     }
                     gofish = false;
@@ -66,12 +66,12 @@ public class PlayScreen {
                     foundMatch = false;
                 }
             } else { // A care has been requested before --> now a go fish or next turn button
-                if(gofish) {
+                if (gofish) {
                     // A card has been requested and it was not a match
                     gofish = false;
                     Card dealtCard = gc.dealSingleCard(gc.getActivePlayer());
                     addPlayerCard(dealtCard);
-                    if(dealtCard.getRank().equals(requestCard.getRank())) {
+                    if (dealtCard.getRank().equals(requestCard.getRank())) {
                         // Received a matching card
                         matchLabel.setText("Drew a matching card!" + dealtCard.getRank() + " of " + dealtCard.getSuit() + ".");
                         requestBtn.setText("Go Again");
@@ -81,7 +81,7 @@ public class PlayScreen {
                         requestBtn.setText("End Turn");
                         foundMatch = false;
                     }
-                } else if(foundMatch) {
+                } else if (foundMatch) {
                     // A matched card has been found --> restart turn
                     gc.loadPanel(new PlayScreen(gc).getView());
                 } else {
@@ -108,8 +108,8 @@ public class PlayScreen {
         requestPlayerLabel = new JLabel();
 
         //Populate opponent panel
-        for(Player p : gc.getPlayers()) {
-            if(p.getId() != activePlayer.getId()) {
+        for (Player p : gc.getPlayers()) {
+            if (p.getId() != activePlayer.getId()) {
                 // Create a button for each opponent
                 JPanel playerInfo = new JPanel();
                 playerInfo.setLayout(new BoxLayout(playerInfo, BoxLayout.PAGE_AXIS));
@@ -125,10 +125,10 @@ public class PlayScreen {
                 playerInfo.add(new JLabel("(" + p.getHand().getPrivateCards().size() + " cards)"));
                 Set<Card> books = new HashSet<>(p.getHand().getPublicCards());
                 String bookList = "";
-                for(Card c : books) {
+                for (Card c : books) {
                     bookList += c.getRank() + ", ";
                 }
-                if(books.size() > 0) {
+                if (books.size() > 0) {
                     bookList = bookList.substring(bookList.length() - 2);
                 }
                 playerInfo.add(new JLabel("books: " + bookList));
@@ -136,7 +136,7 @@ public class PlayScreen {
             } else {
                 JPanel cardWrapper = new JPanel();
                 cardWrapper.setLayout(new GridLayout(3, 21));
-                for(Card c : p.getHand().getPrivateCards()) {
+                for (Card c : p.getHand().getPrivateCards()) {
                     JButton card = new JButton(new ImageIcon(c.getImage(true)));
                     card.setBorder(BorderFactory.createEmptyBorder());
                     card.setContentAreaFilled(false);
@@ -157,7 +157,7 @@ public class PlayScreen {
     }
 
     private void enableRequest() {
-        if(requestCard != null && requestPlayer != null) {
+        if (requestCard != null && requestPlayer != null) {
             requestBtn.setEnabled(true);
         }
     }
@@ -179,33 +179,33 @@ public class PlayScreen {
     private void $$$setupUI$$$() {
         createUIComponents();
         playView = new JPanel();
-        playView.setLayout(new GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
+        playView.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(4, 1, new Insets(0, 0, 0, 0), -1, -1));
         mainMenuBtn = new JButton();
         mainMenuBtn.setText("Return to Main Menu");
-        playView.add(mainMenuBtn, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        playView.add(opponentPanel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
-        playView.add(playerPanel, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(500, -1), null, 0, false));
+        playView.add(mainMenuBtn, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        playView.add(opponentPanel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        playView.add(playerPanel, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_VERTICAL, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(500, -1), null, 0, false));
         infoPanel = new JPanel();
-        infoPanel.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
-        playView.add(infoPanel, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        infoPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
+        playView.add(infoPanel, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER, com.intellij.uiDesigner.core.GridConstraints.FILL_BOTH, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         requestPlayerLabel = new JLabel();
         requestPlayerLabel.setText("Label");
-        infoPanel.add(requestPlayerLabel, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        infoPanel.add(requestPlayerLabel, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         requestCardLabel = new JLabel();
         requestCardLabel.setText("Label");
-        infoPanel.add(requestCardLabel, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        infoPanel.add(requestCardLabel, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         matchLabel = new JLabel();
         matchLabel.setText("");
-        infoPanel.add(matchLabel, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        infoPanel.add(matchLabel, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 2, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         requestBtn = new JButton();
         requestBtn.setEnabled(false);
         requestBtn.setHorizontalAlignment(0);
         requestBtn.setHorizontalTextPosition(0);
         requestBtn.setText("Request");
-        infoPanel.add(requestBtn, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_SOUTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(100, 50), null, 0, false));
+        infoPanel.add(requestBtn, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTHWEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(100, 50), null, 0, false));
         activePlayerLabel = new JLabel();
         activePlayerLabel.setText("Label");
-        infoPanel.add(activePlayerLabel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        infoPanel.add(activePlayerLabel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
@@ -214,4 +214,5 @@ public class PlayScreen {
     public JComponent $$$getRootComponent$$$() {
         return playView;
     }
+
 }
